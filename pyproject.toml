@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "moe-stability"
+version = "0.1.0"
+description = ""
+authors = ["naston <nathan@planetpaull.com>"]
+readme = "README.md"
+packages = [{include = "moe_stability"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+torch = "^2.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
