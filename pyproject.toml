@@ -9,6 +9,9 @@ packages = [{include = "moe_stability"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 torch = "^2.2.0"
+transformers = "^4.38.0"
+datasets = "^2.17.1"
+accelerate = "^0.27.2"
 
 
 [build-system]

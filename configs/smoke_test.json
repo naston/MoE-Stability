@@ -1,0 +1,26 @@
+{
+    "output_dir":"./models",
+    "learning_rate":0.1,
+    "overwrite_output_di":1,
+    "num_train_epochs":1,
+    "save_steps":10000,
+    "save_total_limit":2,
+    "prediction_loss_only":1,
+
+
+    "tokenizer":"bert-base-uncased",
+    "dataset":"wikipedia",
+    "dataset_version":"20220301.en",
+
+    "context_length":512,
+    
+    "d_model":128,
+    "d_ff":64,
+    "n_experts":1,
+    "n_layers":1,
+    "n_heads":1,
+
+    "dropout":0.0,
+    "norm_first": 0,
+    "layer_norm_eps": 1e-5
+}
