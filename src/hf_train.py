@@ -4,6 +4,7 @@ from utils import parse_args, training_metrics
 from transformers import Trainer, TrainingArguments
 from tokenizers import Tokenizer
 from datasets import load_dataset
+from trainer import MoETrainer
 
 def train_lm():
     training_args, args = parse_args(file_path='./configs/smoke_test.json')

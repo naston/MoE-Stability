@@ -3,11 +3,15 @@
 Steps:
 - Implement basic MoE architecture
 - Implement simple training loop (The current code is able to work with Lab2 code)
-- Find dataset and tokenizer (working) (wikipedia english and huggingface tokenizers BPE?)
+
+- Find dataset and tokenizer (wikipedia english and huggingface tokenizers BPE?) <- Partially here
+
 - Create training and eval code
 - Create Config setup
-- Create Fedus Load Balance Loss
-- Tensorboard/ WandB monitoring 
+- Tensorboard monitoring
+
+- Create Fedus Load Balance Loss <- You are here
+
 - Add in evaluation metrics
 - Train and benchmark for testing (this is where I need to be in 2-3 weeks)
 - Verify results against papers?
@@ -20,9 +24,16 @@ There is a chance I need to start with say BERT base and then duplicate the FF a
 
 I have now set up my model to work with the HuggingFace Trainer
     - may have to change output to type ModelOutput
-    - This may also mean loss is calculated internally?
+    - This may also mean loss is calculated internally? (loss is calculated internally but I can change that)
 I now need to create a HuggingFace training script and then test this
     - use BERT tokenizer and Wikidump preprocessed at like 2022 I think they have
     - I will be testing reporting to tensorboard right after this
 
 Once I am done with this I will be at the step of creating loss terms and monitoring
+
+
+By the end of spring break I need to:
+    - fedus (shazeer) loss
+    - load balance loss 
+    - evaluation metrics <- here
+    - test code on a small batch

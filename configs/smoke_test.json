@@ -1,5 +1,8 @@
 {
     "output_dir":"./models",
+    "logging_strategy":"epoch",
+    "report_to":"tensorboard",
+
     "learning_rate":0.1,
     "overwrite_output_di":1,
     "num_train_epochs":1,
@@ -19,6 +22,7 @@
     "n_experts":1,
     "n_layers":1,
     "n_heads":1,
+    "top_k":2,
 
     "dropout":0.0,
     "norm_first": 0,

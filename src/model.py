@@ -37,3 +37,16 @@ class MoE(PreTrainedModel):
         for layer in self.layers:
             x = layer(x, self.causal_mask)
         return self.decoder(x)
+    
+    def fedus_loss(self):
+        raise NotImplementedError()
+        loss = 0
+        for layer in self.layers:
+            loss+=layer.fedus_loss()
+
+    
+    def loramoe_loss(self):
+        raise NotImplementedError()
+        loss = 0
+        for layer in self.layers:
+            loss+=layer.loramoe_loss()
