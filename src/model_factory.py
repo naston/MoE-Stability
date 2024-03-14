@@ -11,6 +11,7 @@ class PositionalEncoder(nn.Module):
     def forward(self, x):
         pass
 
+
 class Decoder(nn.Module):
     def __init__(self, config):
         super().__init__()
@@ -47,11 +48,23 @@ class MoELayer(nn.Module):
 
         return x
     
-    def fedus_loss(self):
-        return self.ExpertFF.fedus_loss()
+    def fedus_loss(self,inputs):
+        return self.ExpertFF.fedus_loss(inputs)
     
-    def loramoe_loss(self):
-        return self.ExpertFF.loramoe_loss()
+    def shazeer_loss(self,inputs):
+        return self.ExpertFF.shazeer_loss(inputs)
+    
+    def loramoe_loss(self,inputs):
+        return self.ExpertFF.loramoe_loss(inputs)
+    
+    def CV(self,inputs):
+        return self.ExpertFF.CV(inputs)
+
+    def RC(self,inputs):
+        return self.ExpertFF.RC(inputs)
+
+    def RC_bal(self,inputs):
+        return self.ExpertFF.RC_bal(inputs)
 
 
 class MoEFF(nn.Module):
@@ -173,7 +186,6 @@ class MoEFF(nn.Module):
         # return sqaure of the coefficient of variation of the importance scores
         return torch.std(importance_scores) /  torch.mean(importance_scores)
     
-
     def RC(self,inputs):
         # https://stats.stackexchange.com/questions/123490/what-is-the-correct-formula-for-between-class-scatter-matrix-in-lda
         route_prob = self.router(inputs)
@@ -197,7 +209,6 @@ class MoEFF(nn.Module):
 
         return torch.trace(torch.matmul(W,torch.linalg.pinv(B)))
         
-
     def RC_bal(self,inputs):
         # https://stats.stackexchange.com/questions/123490/what-is-the-correct-formula-for-between-class-scatter-matrix-in-lda
         route_prob = self.router(inputs)
@@ -223,7 +234,6 @@ class MoEFF(nn.Module):
 
         return torch.trace(torch.matmul(W,torch.linalg.pinv(B)))
         
-
     def IC(self, inputs):
         raise NotImplementedError
         # This method would require a whole load of runs which are averaged together it seems
@@ -239,9 +249,6 @@ class MoEFF(nn.Module):
         
         return numer / denom
     
-
-
-
 
 class MHALayer(nn.Module):
     def __init__(self, config):

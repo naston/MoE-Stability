@@ -38,15 +38,41 @@ class MoE(PreTrainedModel):
             x = layer(x, self.causal_mask)
         return self.decoder(x)
     
-    def fedus_loss(self):
-        raise NotImplementedError()
+    def fedus_loss(self,inputs):
         loss = 0
         for layer in self.layers:
-            loss+=layer.fedus_loss()
+            loss+=layer.fedus_loss(inputs)
+            inputs = self.layer(inputs, self.causal_mask)
+        return loss
 
+    def shazeer_loss(self,inputs):
+        loss = 0
+        for layer in self.layers:
+            loss+=layer.shazeer_loss(inputs)
+            inputs = self.layer(inputs, self.causal_mask)
+        return loss
     
-    def loramoe_loss(self):
+    def loramoe_loss(self,inputs):
         raise NotImplementedError()
         loss = 0
         for layer in self.layers:
-            loss+=layer.loramoe_loss()
+            loss+=layer.loramoe_loss(inputs)
+        return loss
+
+    def CV(self,inputs):
+        CV = 0
+        for layer in self.layers:
+            CV+=layer.CV(inputs)
+        return CV
+
+    def RC(self,inputs):
+        RC = 0
+        for layer in self.layers:
+            RC+=layer.RC(inputs)
+        return RC
+
+    def RC_bal(self,inputs):
+        RC = 0
+        for layer in self.layers:
+            RC+=layer.RC_bal(inputs)
+        return RC
