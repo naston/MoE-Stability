@@ -9,11 +9,10 @@ Steps:
 - Create training and eval code
 - Create Config setup
 - Tensorboard monitoring
-
-- Create Fedus Load Balance Loss <- You are here
-
+- Create Fedus Load Balance Loss 
 - Add in evaluation metrics
-- Train and benchmark for testing (this is where I need to be in 2-3 weeks)
+
+- Train and benchmark for testing (this is where I need to be in 2-3 weeks) <- You are here
 - Verify results against papers?
 - Create additional loss terms
 - Create norm and projected router
@@ -35,5 +34,9 @@ Once I am done with this I will be at the step of creating loss terms and monito
 By the end of spring break I need to:
     - fedus (shazeer) loss
     - load balance loss 
-    - evaluation metrics <- here
-    - test code on a small batch
+    - evaluation metrics 
+    - test code on a small batch <- here
+        - test eval
+        - test loss
+        - test trainer
+        - test monitoring
