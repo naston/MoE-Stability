@@ -57,6 +57,9 @@ class MoELayer(nn.Module):
     def loramoe_loss(self,inputs):
         return self.ExpertFF.loramoe_loss(inputs)
     
+    def gating_loss(self,inputs):
+        return self.ExpertFF.gating_loss(inputs)
+    
     def CV(self,inputs):
         return self.ExpertFF.CV(inputs)
 

@@ -52,6 +52,13 @@ class MoE(PreTrainedModel):
             inputs = self.layer(inputs, self.causal_mask)
         return loss
     
+    def gating_loss(self, inputs):
+        loss = 0
+        for layer in self.layers:
+            loss+=layer.gating_loss(inputs)
+            inputs = self.layer(inputs,self.causal_mask)
+        return loss
+
     def loramoe_loss(self,inputs):
         raise NotImplementedError()
         loss = 0
